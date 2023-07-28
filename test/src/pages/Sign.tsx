@@ -1,6 +1,6 @@
 import React, { useState, ChangeEvent } from "react";
 import axios from "axios";
-import SetAction from "../addLogsys";
+import SetAction from "../addlogsys";
 import getUser from "../getUser";
 
 interface User {

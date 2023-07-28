@@ -2,7 +2,7 @@ import React, { useState, MouseEvent } from "react";
 import axios from "axios";
 import Edit from "./Edit";
 import { Link } from "react-router-dom";
-import SetAction from "../addLogsys";
+import SetAction from "../addlogsys";
 import getUser from "../getUser";
 
 interface User {
@@ -34,7 +34,7 @@ const Add: React.FC = () => {
             getUser();
             window.location.href = "/view";
           } else {
-            SetAction("User Delete with id", "False");
+            SetAction("User Delete with id", false);
           }
         });
     }

@@ -4,7 +4,7 @@ import Main from "./pages/Login";
 import View from "./pages/View";
 import Login from "./pages/Main";
 import Add from "./pages/Add";
-import Sigin from "./pages/Sigin";
+import Sigin from "./pages/Sign";
 import Log from "./pages/Log";
 import Edit from "./pages/Edit";
 
