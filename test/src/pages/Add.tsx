@@ -34,7 +34,7 @@ const Add: React.FC = () => {
             getUser();
             window.location.href = "/view";
           } else {
-            SetAction("User Delete with id", false);
+            SetAction("User Delete with id", "false");
           }
         });
     }

@@ -1,11 +1,11 @@
 interface LogObject {
   Action: string;
   Date: string;
-  Success: boolean;
+  Success: string | boolean;
   Time: string;
 }
 
-function SetAction(Action: string, isSucces: boolean): void {
+function SetAction(Action: string, isSucces: string): void {
   let loggersysLL: LogObject[] = [];
 
   if (localStorage.getItem("logsystem") !== null) {
