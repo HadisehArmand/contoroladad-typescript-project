@@ -1,5 +1,11 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useParams,
+  Link,
+} from "react-router-dom";
 import Main from "./pages/Login";
 import View from "./pages/View";
 import Login from "./pages/Main";
@@ -7,37 +13,35 @@ import Add from "./pages/Add";
 import Sigin from "./pages/Sign";
 import Log from "./pages/Log";
 import Edit from "./pages/Edit";
-
-class App extends React.Component {
-  render() {
-    return (
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Main />}>
-            <Route index element={<Main />} />
-          </Route>
-          <Route path="/view" element={<View />}>
-            <Route index element={<View />} />
-          </Route>
-          <Route path="/login" element={<Login />}>
-            <Route index element={<Login />} />
-          </Route>
-          <Route path="/add" element={<Add />}>
-            <Route index element={<Add />} />
-          </Route>
-          <Route path="/log" element={<Log />}>
-            <Route index element={<Log />} />
-          </Route>
-          <Route path="/sign" element={<Sigin />}>
-            <Route index element={<Sigin />} />
-          </Route>
-          <Route path="/edit" element={(props: any) => <Edit {...props} />}>
-            <Route index element={(props: any) => <Edit {...props} />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    );
-  }
+interface EditParams {
+  id: string;
+  [key: string]: string | undefined;
 }
+const EditComponent: React.FC = () => {
+  const params = useParams<EditParams>();
+  const { id } = params;
+
+  // Handle the case when id is undefined or not a valid number
+  const parsedId = id ? parseInt(id, 10) : undefined;
+  const isValidId = !isNaN(parsedId as number);
+
+  return isValidId ? <Edit id={parsedId as number} /> : <div>Invalid ID</div>;
+};
+
+const App: React.FC = () => {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/view" element={<View />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/add" element={<Add />} />
+        <Route path="/log" element={<Log />} />
+        <Route path="/sign" element={<Sigin />} />
+        <Route path="/edit/:id" element={<EditComponent />} />
+      </Routes>
+    </BrowserRouter>
+  );
+};
 
 export default App;

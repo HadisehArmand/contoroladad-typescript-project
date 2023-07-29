@@ -1,4 +1,4 @@
-import React, { useState, MouseEvent } from "react";
+import React, { useEffect, useState, MouseEvent } from "react";
 import axios from "axios";
 import Edit from "./Edit";
 import { Link } from "react-router-dom";
@@ -16,6 +16,11 @@ interface User {
 
 const Add: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
+  useEffect(() => {
+    getUser();
+    const fetchedUsers = JSON.parse(localStorage.getItem("users") || "[]");
+    setUsers(fetchedUsers);
+  }, []);
   const [add, setAdd] = useState<boolean>(true);
   const [edit, setEdit] = useState<boolean>(false);
   const [currentId, setCurrentId] = useState<number>(0);

@@ -106,6 +106,74 @@ const Edit: React.FC<EditProps> = (props) => {
               }
             />
           </div>
+          <div className="input-group mb-3  d-flex justify-content-center">
+            <span className="input-group-text" id="basic-addon1">
+              L
+            </span>
+            <input
+              id="lastname"
+              type="text"
+              className="form-control"
+              placeholder="LastName"
+              aria-label="LastName"
+              aria-describedby="basic-addon1"
+              value={lastname}
+              onChange={(evt: ChangeEvent<HTMLInputElement>) =>
+                setLastname(evt.target.value)
+              }
+            />
+          </div>
+          <div className="input-group mb-3  d-flex justify-content-center">
+            <span className="input-group-text" id="basic-addon1">
+              @
+            </span>
+            <input
+              id="email"
+              type="text"
+              className="form-control"
+              placeholder="email"
+              aria-label="email"
+              aria-describedby="basic-addon1"
+              value={email}
+              onChange={(evt: ChangeEvent<HTMLInputElement>) =>
+                setEmail(evt.target.value)
+              }
+            />
+          </div>
+          <div className="input-group mb-3  d-flex justify-content-center">
+            <span className="input-group-text" id="basic-addon1">
+              P
+            </span>
+            <input
+              id="password"
+              type="text"
+              className="form-control"
+              placeholder="password"
+              aria-label="password"
+              aria-describedby="basic-addon1"
+              value={password}
+              onChange={(evt: ChangeEvent<HTMLInputElement>) =>
+                setPassword(evt.target.value)
+              }
+            />
+          </div>
+          <div className="input-group mb-3  d-flex justify-content-center">
+            <span className="input-group-text" id="basic-addon1">
+              A
+            </span>
+            <input
+              id="avatar"
+              type="text"
+              className="form-control"
+              placeholder="avatar"
+              aria-label="avatar"
+              aria-describedby="basic-addon1"
+              value={avatar}
+              onChange={(evt: ChangeEvent<HTMLInputElement>) =>
+                setAvatar(evt.target.value)
+              }
+            />
+          </div>
         </div>
         {/* ... and the rest of the inputs ... */}
         <div className="row d-flex justify-content-center">
