@@ -32,7 +32,7 @@ const Main: React.FC = () => {
               <h1 className="header">User Management</h1>
             </div>
             <div className="row">
-              <div className=" d-grid justify-content-center gap-2 ">
+              <div className=" d-grid justify-content-center col-6 ">
                 <Link className="disable-link" to="/view">
                   <input
                     className="btn-index header-btn-index btn-primary"
@@ -41,9 +41,7 @@ const Main: React.FC = () => {
                   />
                 </Link>
               </div>
-            </div>
-            <div className="row">
-              <div className=" d-grid justify-content-center gap-2   ">
+              <div className=" d-grid justify-content-center col-6">
                 <Link className="disable-link" to="/add">
                   <input
                     className="btn-index header-btn-index btn-primary"
@@ -52,7 +50,9 @@ const Main: React.FC = () => {
                   />
                 </Link>
               </div>
-              <div className=" d-grid justify-content-center gap-2  ">
+            </div>
+            <div className="row">
+              <div className=" d-grid justify-content-center col-6 ">
                 <Link className="disable-link" to="/log">
                   <input
                     className="btn-index header-btn-index btn-primary"
@@ -62,7 +62,7 @@ const Main: React.FC = () => {
                   />
                 </Link>
               </div>
-              <div className=" d-grid justify-content-center gap-2  ">
+              <div className=" d-grid justify-content-center col-6 ">
                 <input
                   className="btn-index header-btn-index btn-primary"
                   type="button"

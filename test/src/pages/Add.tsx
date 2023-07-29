@@ -4,7 +4,7 @@ import Edit from "./Edit";
 import { Link } from "react-router-dom";
 import SetAction from "../addlogsys";
 import getUser from "../getUser";
-
+import "./login.css";
 interface User {
   id: number;
   firstname: string;

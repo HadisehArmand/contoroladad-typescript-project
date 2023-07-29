@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import SetAction from "../addlogsys";
 import getUser from "../getUser";
+import "./login.css";
 
 interface User {
   id: number;

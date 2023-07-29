@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Main from "./Main";
 import add_admin from "../refresh";
 import getUser from "../getUser";
+import "./login.css";
 
 interface User {
   email: string;
@@ -82,7 +83,7 @@ const Login: React.FC = () => {
             <div className="row d-flex justify-content-center">
               <div className="col-6  d-flex justify-content-evenly">
                 <input
-                  className="btn-bt"
+                  className="btn-bt btn"
                   type="button"
                   value="Login"
                   onClick={checkuser}
@@ -96,5 +97,4 @@ const Login: React.FC = () => {
     </div>
   );
 };
-
 export default Login;
