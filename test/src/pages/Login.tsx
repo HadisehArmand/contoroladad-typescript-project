@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Main from "./Main";
-import add_admin from "../refresh";
 import getUser from "../getUser";
 import "./login.css";
+import useAuthStore from "../refresh";
 
 interface User {
   email: string;
@@ -10,30 +10,26 @@ interface User {
 }
 
 const Login: React.FC = () => {
+  const { adminUsername, adminPassword, isLogin, setIsLogin } = useAuthStore();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [main, setMain] = useState<boolean>(
-    JSON.parse(localStorage.getItem("islogin") || "false") === true
-  );
-  const admin_username = localStorage.getItem("admin-username") || "";
-  const admin_password = localStorage.getItem("admin-password") || "";
-  const [isLogin, setIsLogin] = useState<boolean>(
-    !(JSON.parse(localStorage.getItem("islogin") || "false") === true)
-  );
-
-  useEffect(() => {
-    add_admin();
-    getUser();
-  }, []);
+  const [main, setMain] = useState<boolean>(isLogin);
+  const admin_username = adminUsername;
+  const admin_password = adminPassword;
+  // useEffect(() => {
+  //   getUser();
+  // }, []);
 
   const checkuser = () => {
     if (email !== "" && password !== "") {
       if (email === admin_username && password === admin_password) {
         alert("login success !");
         getUser();
-        setIsLogin(false);
+        setIsLogin(true);
+        console.log(isLogin);
+        console.log(setIsLogin(true));
         setMain(true);
-        localStorage.setItem("islogin", "true");
+        console.log(main);
       }
     } else {
       alert("complete field");
@@ -42,7 +38,7 @@ const Login: React.FC = () => {
 
   return (
     <div>
-      {isLogin && (
+      {!isLogin && (
         <div className="container-fluid d-flex justify-content-center mt-5">
           <div className="row main-login">
             <div className="row d-flex justify-content-center">

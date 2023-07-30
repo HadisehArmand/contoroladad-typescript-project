@@ -1,13 +1,18 @@
-function add_admin(): void {
-  let isloginstatus = localStorage.getItem("islogin");
-  if (isloginstatus === null) {
-    localStorage.setItem("islogin", "false");
-  } else {
-    localStorage.setItem("islogin", isloginstatus);
-  }
-  localStorage.setItem("admin-username", "admin@admin.com");
-  localStorage.setItem("admin-password", "12345@");
-  console.log("repeated");
+import { create } from "zustand";
+import React from "react";
+interface AuthStore {
+  isLogin: boolean;
+  adminUsername: string;
+  adminPassword: string;
+  setIsLogin: (status: boolean) => void;
 }
 
-export default add_admin;
+const useAuthStore = create<AuthStore>((set) => ({
+  isLogin: false,
+  adminUsername: "admin@admin.com",
+  adminPassword: "12345@",
+  setIsLogin: (status: boolean) => set((state) => ({ isLogin: status })),
+  // setIsLogin: (status: boolean) => set({ isLogin: status }),
+}));
+
+export default useAuthStore;
