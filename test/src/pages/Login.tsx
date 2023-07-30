@@ -3,6 +3,7 @@ import Main from "./Main";
 import getUser from "../getUser";
 import "./login.css";
 import useAuthStore from "../refresh";
+import useUserStore from "../users";
 
 interface User {
   email: string;
@@ -16,20 +17,15 @@ const Login: React.FC = () => {
   const [main, setMain] = useState<boolean>(isLogin);
   const admin_username = adminUsername;
   const admin_password = adminPassword;
-  // useEffect(() => {
-  //   getUser();
-  // }, []);
 
   const checkuser = () => {
     if (email !== "" && password !== "") {
       if (email === admin_username && password === admin_password) {
         alert("login success !");
-        getUser();
         setIsLogin(true);
-        console.log(isLogin);
-        console.log(setIsLogin(true));
         setMain(true);
-        console.log(main);
+        getUser();
+
       }
     } else {
       alert("complete field");

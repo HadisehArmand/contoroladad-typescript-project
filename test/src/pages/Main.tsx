@@ -2,26 +2,20 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import getUser from "../getUser";
 import Login from "./Login";
+import useAuthStore from "../refresh";
 
 const Main: React.FC = () => {
-  const [isLogin, setIsLogin] = useState<boolean>(
-    JSON.parse(localStorage.getItem("islogin") || "false") === true
-  );
-  const [loginPage, setLoginPage] = useState<boolean>(
-    !(JSON.parse(localStorage.getItem("islogin") || "false") === true)
-  );
+  const { isLogin, setIsLogin } = useAuthStore();
+  const [loginPage, setLoginPage] = useState<boolean>(!isLogin);
 
   const logout = () => {
-    localStorage.setItem("islogin", (!isLogin).toString());
-    setIsLogin(JSON.parse(localStorage.getItem("islogin") || "false") === true);
-    setLoginPage(
-      !(JSON.parse(localStorage.getItem("islogin") || "false") === true)
-    );
+    setIsLogin(false);
+    setLoginPage(!isLogin);
   };
 
-  useEffect(() => {
-    // getUser();
-  }, []);
+  // useEffect(() => {
+  //   getUser();
+  // }, []);
 
   return (
     <div>

@@ -12,7 +12,6 @@ const useAuthStore = create<AuthStore>((set) => ({
   adminUsername: "admin@admin.com",
   adminPassword: "12345@",
   setIsLogin: (status: boolean) => set((state) => ({ isLogin: status })),
-  // setIsLogin: (status: boolean) => set({ isLogin: status }),
 }));
 
 export default useAuthStore;
