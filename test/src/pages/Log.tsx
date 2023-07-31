@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
-import "./login.css";
+import React, { useEffect } from "react";
+import create from "zustand";
+
 interface LogItem {
   Action: string;
   Date: string;
@@ -7,15 +8,26 @@ interface LogItem {
   Success: string;
 }
 
-const Login: React.FC = (props) => {
-  const [log, setLog] = useState<LogItem[]>([]);
+interface LogStore {
+  log: LogItem[];
+  setLog: (logs: LogItem[]) => void;
+}
+
+const useLogStore = create<LogStore>((set) => ({
+  log: [],
+  setLog: (logs) => set({ log: logs }),
+}));
+
+const Login: React.FC = () => {
+  const log = useLogStore((state) => state.log);
+  const setLog = useLogStore((state) => state.setLog);
 
   useEffect(() => {
     const logs: LogItem[] = JSON.parse(
       localStorage.getItem("logsystem") || "[]"
     );
     setLog(logs);
-  }, []);
+  }, [setLog]);
 
   const renderLog = () => {
     return log.map(({ Action, Date, Time, Success }, index) => (
